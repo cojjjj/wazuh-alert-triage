@@ -1,0 +1,1860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wazuh Alert Triage Report</title>
+    <style>
+        body {
+            background: #0f172a;
+            color: #e5e7eb;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .header {
+            border: 1px solid #334155;
+            border-radius: 14px;
+            padding: 24px;
+            background: linear-gradient(135deg, #111827, #1e293b);
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            margin: 0;
+            color: #38bdf8;
+            font-size: 34px;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            margin-top: 8px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .card {
+            background: #111827;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 18px;
+        }
+
+        .card-title {
+            color: #94a3b8;
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+
+        .card-value {
+            font-size: 28px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .risk-bar {
+            background: #334155;
+            border-radius: 999px;
+            overflow: hidden;
+            height: 16px;
+            margin-top: 12px;
+        }
+
+        .risk-fill {
+            width: 100%;
+            background: #ef4444;
+            height: 100%;
+        }
+
+        section {
+            background: #111827;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #38bdf8;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+        }
+
+        th, td {
+            border-bottom: 1px solid #334155;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            color: #93c5fd;
+            background: #1e293b;
+        }
+
+        code {
+            color: #facc15;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: #ef4444;
+            color: #020617;
+            font-weight: bold;
+        }
+
+        .footer {
+            color: #64748b;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Wazuh Alert Triage Report</h1>
+            <div class="subtitle">Generated: 2026-06-27 01:01:11</div>
+            <div class="subtitle">Automated security alert summary and investigation report.</div>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <div class="card-title">Alerts Analyzed</div>
+                <div class="card-value">250</div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Risk Score</div>
+                <div class="card-value">100/100</div>
+                <div class="risk-bar"><div class="risk-fill"></div></div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Risk Level</div>
+                <div class="card-value"><span class="badge">HIGH</span></div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Threat Findings</div>
+                <div class="card-value">145</div>
+            </div>
+        </div>
+
+        <section>
+            <h2>Executive Summary</h2>
+            <p>
+                This report summarizes exported Wazuh security alerts, highlights suspicious activity,
+                maps observed behavior to MITRE ATT&CK techniques, and reconstructs an investigation timeline.
+            </p>
+        </section>
+
+        <section>
+            <h2>Threat Findings</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Process</th>
+                        <th>Reason</th>
+                        <th>MITRE ATT&CK</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr>
+                <td><code>sshd-session</code></td>
+                <td>SSH login/session activity detected, rule 5501</td>
+                <td>T1021.004 - SSH</td>
+            </tr>
+            
+            <tr>
+                <td><code>sshd-session</code></td>
+                <td>SSH login/session activity detected, rule 5715</td>
+                <td>T1021.004 - SSH</td>
+            </tr>
+            
+            <tr>
+                <td><code>sshd-session</code></td>
+                <td>SSH login/session activity detected, rule 5501</td>
+                <td>T1021.004 - SSH</td>
+            </tr>
+            
+            <tr>
+                <td><code>sshd-session</code></td>
+                <td>SSH login/session activity detected, rule 5715</td>
+                <td>T1021.004 - SSH</td>
+            </tr>
+            
+            <tr>
+                <td><code>sshd-session</code></td>
+                <td>SSH login/session activity detected, rule 5501</td>
+                <td>T1021.004 - SSH</td>
+            </tr>
+            
+            <tr>
+                <td><code>sshd-session</code></td>
+                <td>SSH login/session activity detected, rule 5715</td>
+                <td>T1021.004 - SSH</td>
+            </tr>
+            
+            <tr>
+                <td><code>sshd-session</code></td>
+                <td>SSH login/session activity detected, rule 5501</td>
+                <td>T1021.004 - SSH</td>
+            </tr>
+            
+            <tr>
+                <td><code>sshd-session</code></td>
+                <td>SSH login/session activity detected, rule 5715</td>
+                <td>T1021.004 - SSH</td>
+            </tr>
+            
+            <tr>
+                <td><code>sshd-session</code></td>
+                <td>SSH login/session activity detected, rule 5715</td>
+                <td>T1021.004 - SSH</td>
+            </tr>
+            
+            <tr>
+                <td><code>sshd-session</code></td>
+                <td>SSH login/session activity detected, rule 5501</td>
+                <td>T1021.004 - SSH</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sshd-session</code></td>
+                <td>SSH login/session activity detected, rule 5715</td>
+                <td>T1021.004 - SSH</td>
+            </tr>
+            
+            <tr>
+                <td><code>sshd-session</code></td>
+                <td>SSH login/session activity detected, rule 5501</td>
+                <td>T1021.004 - SSH</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sshd-session</code></td>
+                <td>SSH login/session activity detected, rule 5501</td>
+                <td>T1021.004 - SSH</td>
+            </tr>
+            
+            <tr>
+                <td><code>sshd-session</code></td>
+                <td>SSH login/session activity detected, rule 5715</td>
+                <td>T1021.004 - SSH</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5502</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5501</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Sudo activity detected, rule 5402</td>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+            </tr>
+            
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>MITRE ATT&CK Summary</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Technique</th>
+                        <th>Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr>
+                <td>T1021.004 - SSH</td>
+                <td>14</td>
+            </tr>
+            
+            <tr>
+                <td>T1548 - Abuse Elevation Control Mechanism</td>
+                <td>131</td>
+            </tr>
+            
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Investigation Timeline</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Agent</th>
+                        <th>Event ID</th>
+                        <th>Process</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr>
+                <td>2026-06-27T03:44:09.343Z</td>
+                <td>wazuh-server</td>
+                <td>5501</td>
+                <td><code>sudo</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:44:09.343Z</td>
+                <td>wazuh-server</td>
+                <td>5402</td>
+                <td><code>sudo</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:45:00.471Z</td>
+                <td>wazuh-server</td>
+                <td>5502</td>
+                <td><code>sudo</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:49:28.186Z</td>
+                <td>wazuh-server</td>
+                <td>5501</td>
+                <td><code>sudo</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:49:28.186Z</td>
+                <td>wazuh-server</td>
+                <td>5402</td>
+                <td><code>sudo</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:49:28.186Z</td>
+                <td>wazuh-server</td>
+                <td>5502</td>
+                <td><code>sudo</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:50:12.663Z</td>
+                <td>wazuh-server</td>
+                <td>5501</td>
+                <td><code>sudo</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:50:12.663Z</td>
+                <td>wazuh-server</td>
+                <td>5502</td>
+                <td><code>sudo</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:50:12.663Z</td>
+                <td>wazuh-server</td>
+                <td>5402</td>
+                <td><code>sudo</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:50:20.680Z</td>
+                <td>wazuh-server</td>
+                <td>5402</td>
+                <td><code>sudo</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:50:20.680Z</td>
+                <td>wazuh-server</td>
+                <td>5501</td>
+                <td><code>sudo</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:50:57.196Z</td>
+                <td>wazuh-server</td>
+                <td>5502</td>
+                <td><code>sudo</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:51:05.351Z</td>
+                <td>wazuh-server</td>
+                <td>5501</td>
+                <td><code>sudo</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:51:05.351Z</td>
+                <td>wazuh-server</td>
+                <td>5402</td>
+                <td><code>sudo</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:51:07.476Z</td>
+                <td>wazuh-server</td>
+                <td>40704</td>
+                <td><code>systemd</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:51:07.476Z</td>
+                <td>wazuh-server</td>
+                <td>5502</td>
+                <td><code>sudo</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:51:19.544Z</td>
+                <td>wazuh-server</td>
+                <td>5501</td>
+                <td><code>sudo</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:51:19.545Z</td>
+                <td>wazuh-server</td>
+                <td>5502</td>
+                <td><code>sudo</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:51:19.545Z</td>
+                <td>wazuh-server</td>
+                <td>5402</td>
+                <td><code>sudo</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:52:56.073Z</td>
+                <td>wazuh-server</td>
+                <td>5501</td>
+                <td><code>sudo</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:52:56.073Z</td>
+                <td>wazuh-server</td>
+                <td>5502</td>
+                <td><code>sudo</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:52:56.073Z</td>
+                <td>wazuh-server</td>
+                <td>5402</td>
+                <td><code>sudo</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:53:04.108Z</td>
+                <td>wazuh-server</td>
+                <td>5402</td>
+                <td><code>sudo</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:53:04.108Z</td>
+                <td>wazuh-server</td>
+                <td>5502</td>
+                <td><code>sudo</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:53:04.108Z</td>
+                <td>wazuh-server</td>
+                <td>5501</td>
+                <td><code>sudo</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:53:10.130Z</td>
+                <td>wazuh-server</td>
+                <td>5402</td>
+                <td><code>sudo</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:53:10.130Z</td>
+                <td>wazuh-server</td>
+                <td>5501</td>
+                <td><code>sudo</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:53:24.151Z</td>
+                <td>wazuh-server</td>
+                <td>5502</td>
+                <td><code>sudo</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:53:28.158Z</td>
+                <td>wazuh-server</td>
+                <td>5402</td>
+                <td><code>sudo</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:53:28.158Z</td>
+                <td>wazuh-server</td>
+                <td>5501</td>
+                <td><code>sudo</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:53:28.158Z</td>
+                <td>wazuh-server</td>
+                <td>5502</td>
+                <td><code>sudo</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:54:03.505Z</td>
+                <td>wazuh-server</td>
+                <td>533</td>
+                <td><code>ossec</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:54:18.584Z</td>
+                <td>wazuh-server</td>
+                <td>5715</td>
+                <td><code>sshd-session</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:54:18.584Z</td>
+                <td>wazuh-server</td>
+                <td>5501</td>
+                <td><code>sshd-session</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:54:18.584Z</td>
+                <td>wazuh-server</td>
+                <td>52002</td>
+                <td><code>kernel</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:56:05.934Z</td>
+                <td>wazuh-server</td>
+                <td>5501</td>
+                <td><code>sshd-session</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:56:05.934Z</td>
+                <td>wazuh-server</td>
+                <td>5715</td>
+                <td><code>sshd-session</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:56:05.934Z</td>
+                <td>wazuh-server</td>
+                <td>52002</td>
+                <td><code>kernel</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:56:30.005Z</td>
+                <td>wazuh-server</td>
+                <td>5502</td>
+                <td><code>sshd-session</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:57:04.579Z</td>
+                <td>wazuh-server</td>
+                <td>5501</td>
+                <td><code>sshd-session</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:57:04.579Z</td>
+                <td>wazuh-server</td>
+                <td>5715</td>
+                <td><code>sshd-session</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:57:51.590Z</td>
+                <td>wazuh-server</td>
+                <td>5502</td>
+                <td><code>sshd-session</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:58:38.213Z</td>
+                <td>wazuh-server</td>
+                <td>5501</td>
+                <td><code>sshd-session</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:58:38.213Z</td>
+                <td>wazuh-server</td>
+                <td>5715</td>
+                <td><code>sshd-session</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T03:58:40.215Z</td>
+                <td>wazuh-server</td>
+                <td>52002</td>
+                <td><code>kernel</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T04:00:03.524Z</td>
+                <td>wazuh-server</td>
+                <td>533</td>
+                <td><code>ossec</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T04:00:23.567Z</td>
+                <td>wazuh-server</td>
+                <td>5501</td>
+                <td><code>sshd-session</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T04:00:23.567Z</td>
+                <td>wazuh-server</td>
+                <td>52002</td>
+                <td><code>kernel</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T04:00:23.567Z</td>
+                <td>wazuh-server</td>
+                <td>5715</td>
+                <td><code>sshd-session</code></td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-27T04:00:39.780Z</td>
+                <td>wazuh-server</td>
+                <td>5502</td>
+                <td><code>sshd-session</code></td>
+            </tr>
+            
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Indicators of Compromise</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                <tr>
+                    <td>ips</td>
+                    <td><code>192.168.50.128</code></td>
+                </tr>
+                
+                <tr>
+                    <td>ips</td>
+                    <td><code>192.168.50.62</code></td>
+                </tr>
+                
+                <tr>
+                    <td>domains</td>
+                    <td><code>en-us.ftl</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/FAILURE</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/bin/.</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/bin/cat</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/bin/chfn</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/bin/chgrp</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/bin/chmod</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/bin/chown</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/bin/chsh</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/bin/date</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/bin/echo</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/bin/env</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/bin/ls</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/bin/md5sum</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/bin/passwd</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/bin/sh</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/bin/uname</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/chronyd</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/dev/pts/0</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/dev/ttyo</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/etc/wazuh-indexer/opensearch.yml</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/etc/wazuh-indexer/opensearch.yml.bak</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/home/socadmin</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/home/socadmin/wazuh-install-files/wazuh-passwords.txt</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/java</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/lsfile</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/node</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/prof</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/python3</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/security</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/systemd</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/systemd-networ</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/systemd-resolve</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/usr/bin/apt</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/usr/bin/cat</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/usr/bin/chfn</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/usr/bin/chgrp</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/usr/bin/chmod</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/usr/bin/chown</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/usr/bin/chsh</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/usr/bin/cp</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/usr/bin/date</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/usr/bin/echo</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/usr/bin/env</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/usr/bin/find</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/usr/bin/grep</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/usr/bin/ls</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/usr/bin/md5sum</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/usr/bin/nano</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/usr/bin/passwd</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/usr/bin/sed</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/usr/bin/sqlite3</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/usr/bin/ss</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/usr/bin/systemctl</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/usr/bin/uname</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/usr/share/coreutils/locales/uucore/en-US.ftl</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/usr/share/wazuh-dashboard/data/wazuh/config</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/usr/share/wazuh-dashboard/data/wazuh/config/wazuh.yml</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/usr/share/wazuh-indexer/plugins/opensearch-security/tools/wazuh-passwords-tool.sh</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/var/ossec</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/var/ossec/api</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/var/ossec/api/configuration</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/var/ossec/api/configuration/api.yaml</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/var/ossec/api/configuration/security/rbac.db</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/var/ossec/api/scripts/manage_users.py</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/var/ossec/bin/rbac_control</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/var/ossec/bin/wazuh-control</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/var/ossec/etc/ossec.conf</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/var/ossec/framework</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/var/ossec/framework/python/bin/python3</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/wazuh-authd</code></td>
+                </tr>
+                
+                <tr>
+                    <td>file_paths</td>
+                    <td><code>/wazuh-remoted</code></td>
+                </tr>
+                
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Recommended Analyst Actions</h2>
+            <ul>
+                <li>Review suspicious process executions.</li>
+                <li>Validate PowerShell activity and command-line arguments.</li>
+                <li>Correlate events with endpoint logs and user activity.</li>
+                <li>Investigate observed MITRE ATT&CK techniques.</li>
+                <li>Check for persistence, lateral movement, and outbound network connections.</li>
+            </ul>
+        </section>
+
+        <div class="footer">
+            Generated by Wazuh Alert Triage
+        </div>
+    </div>
+</body>
+</html>

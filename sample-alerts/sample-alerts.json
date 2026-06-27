@@ -1,1 +1,28 @@
-[]
+[
+  {
+    "agent": { "name": "Windows-Endpoint" },
+    "rule": { "id": "61612", "level": 8, "description": "Sysmon Process Creation" },
+    "data": {
+      "win": {
+        "system": { "eventID": "1" },
+        "eventdata": {
+          "image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "commandLine": "powershell.exe -enc SQBFAFgA"
+        }
+      }
+    }
+  },
+  {
+    "agent": { "name": "Windows-Endpoint" },
+    "rule": { "id": "61613", "level": 5, "description": "Sysmon Network Connection" },
+    "data": {
+      "win": {
+        "system": { "eventID": "3" },
+        "eventdata": {
+          "image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "destinationIp": "185.199.108.133"
+        }
+      }
+    }
+  }
+]

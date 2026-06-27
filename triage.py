@@ -1,96 +1,138 @@
-import json
-import sys
+import argparse
 from collections import Counter
-from rich.console import Console
-from rich.table import Table
-from rich.panel import Panel
 
-console = Console()
+from alert_parser import load_alerts, get_field
+from detector import detect_suspicious_activity
+from timeline import build_timeline
+from ioc import extract_iocs
+from opensearch_api import get_indexer_alerts
+from display import (
+    banner,
+    print_severity,
+    print_agents,
+    print_findings,
+    print_timeline,
+    print_iocs,
+)
+from reports import generate_markdown_report, generate_html_report
 
-def load_alerts(file_path):
-    with open(file_path, "r", encoding="utf-8") as file:
-        data = json.load(file)
 
-    if isinstance(data, list):
-        return data
+def print_summary(total_alerts, risk_score):
+    print()
+    print(f"Total Alerts Loaded: {total_alerts}")
+    print(f"Risk Score: {risk_score}/100")
 
-    if isinstance(data, dict) and "alerts" in data:
-        return data["alerts"]
+    if risk_score >= 75:
+        print("Risk Level: HIGH")
+    elif risk_score >= 40:
+        print("Risk Level: MEDIUM")
+    elif risk_score > 0:
+        print("Risk Level: LOW")
+    else:
+        print("Risk Level: NONE")
 
-    if isinstance(data, dict):
-        return [data]
+    print()
 
-    return []
 
-def get_field(alert, path, default="unknown"):
-    current = alert
-    for part in path.split("."):
-        if isinstance(current, dict):
-            current = current.get(part, default)
-        else:
-            return default
-    return current if current is not None else default
-
-def main():
-    if len(sys.argv) != 2:
-        console.print("[red]Usage:[/red] python triage.py <alerts.json>")
-        sys.exit(1)
-
-    alerts = load_alerts(sys.argv[1])
-
-    agents = Counter()
-    rule_ids = Counter()
+def analyze_alerts(alerts):
     severities = Counter()
-    event_ids = Counter()
+    agents = Counter()
 
     for alert in alerts:
-        agents[get_field(alert, "agent.name")] += 1
-        rule_ids[get_field(alert, "rule.id")] += 1
         severities[get_field(alert, "rule.level")] += 1
-        event_ids[get_field(alert, "data.win.system.eventID")] += 1
+        agents[get_field(alert, "agent.name")] += 1
 
-    console.print(Panel.fit(
-        "[bold cyan]WAZUH ALERT TRIAGE[/bold cyan]\nSecurity alert summary tool",
-        border_style="cyan"
-    ))
+    findings, risk_score, mitre_hits = detect_suspicious_activity(alerts)
+    timeline = build_timeline(alerts)
+    iocs = extract_iocs(alerts)
 
-    console.print(f"\n[bold]Total Alerts Loaded:[/bold] {len(alerts)}\n")
+    banner()
+    print_summary(len(alerts), risk_score)
+    print_severity(severities)
+    print_agents(agents)
+    print_findings(findings)
+    print_timeline(timeline)
+    print_iocs(iocs)
 
-    severity_table = Table(title="Severity Breakdown")
-    severity_table.add_column("Rule Level", style="cyan")
-    severity_table.add_column("Count", style="green")
+    markdown_path = generate_markdown_report(
+        alerts,
+        findings,
+        risk_score,
+        mitre_hits,
+        timeline,
+    )
 
-    for level, count in severities.most_common():
-        severity_table.add_row(str(level), str(count))
+    html_path = generate_html_report(
+        alerts,
+        findings,
+        risk_score,
+        mitre_hits,
+        timeline,
+        iocs,
+    )
 
-    console.print(severity_table)
+    print()
+    print(f"Markdown report saved to: {markdown_path}")
+    print(f"HTML report saved to: {html_path}")
 
-    agent_table = Table(title="Top Agents")
-    agent_table.add_column("Agent", style="cyan")
-    agent_table.add_column("Count", style="green")
 
-    for agent, count in agents.most_common(10):
-        agent_table.add_row(str(agent), str(count))
+def main():
+    parser = argparse.ArgumentParser(
+        description="Wazuh Alert Triage Tool"
+    )
 
-    console.print(agent_table)
+    parser.add_argument(
+        "json",
+        nargs="?",
+        help="Exported Wazuh alert JSON file"
+    )
 
-    rule_table = Table(title="Top Rule IDs")
-    rule_table.add_column("Rule ID", style="cyan")
-    rule_table.add_column("Count", style="green")
+    parser.add_argument(
+        "--live",
+        action="store_true",
+        help="Pull alerts directly from Wazuh Indexer / OpenSearch"
+    )
 
-    for rule_id, count in rule_ids.most_common(10):
-        rule_table.add_row(str(rule_id), str(count))
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=250,
+        help="Number of alerts to pull in live mode"
+    )
 
-    console.print(rule_table)
+    args = parser.parse_args()
 
-    event_table = Table(title="Top Windows / Sysmon Event IDs")
-    event_table.add_column("Event ID", style="cyan")
-    event_table.add_column("Count", style="green")
+    if args.live:
+        indexer_url = input(
+            "Indexer URL (default: https://127.0.0.1:9200): "
+        ).strip()
 
-    for event_id, count in event_ids.most_common(10):
-        event_table.add_row(str(event_id), str(count))
+        if not indexer_url:
+            indexer_url = "https://127.0.0.1:9200"
 
-    console.print(event_table)
+        indexer_username = input("Indexer Username: ").strip()
+        indexer_password = input("Indexer Password: ").strip()
+
+        print()
+        print("Pulling alerts from Wazuh Indexer...")
+
+        alerts = get_indexer_alerts(
+            indexer_url=indexer_url,
+            username=indexer_username,
+            password=indexer_password,
+            limit=args.limit,
+            verify_ssl=False,
+        )
+
+        analyze_alerts(alerts)
+
+    else:
+        if not args.json:
+            parser.error("Please provide a JSON file or use --live.")
+
+        alerts = load_alerts(args.json)
+        analyze_alerts(alerts)
+
 
 if __name__ == "__main__":
     main()
