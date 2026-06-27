@@ -219,7 +219,7 @@ GitHub:
 https://github.com/cojjjj
 
 LinkedIn:
-*(Add your LinkedIn URL here)*
+https://www.linkedin.com/in/tyler-deppa-2523a0345/
 
 ---
 
