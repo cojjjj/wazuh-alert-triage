@@ -3,11 +3,12 @@ import sys
 from collections import Counter
 from rich.console import Console
 from rich.table import Table
+from rich.panel import Panel
 
 console = Console()
 
-def load_alerts(path):
-    with open(path, "r", encoding="utf-8") as file:
+def load_alerts(file_path):
+    with open(file_path, "r", encoding="utf-8") as file:
         data = json.load(file)
 
     if isinstance(data, list):
@@ -16,7 +17,19 @@ def load_alerts(path):
     if isinstance(data, dict) and "alerts" in data:
         return data["alerts"]
 
-    return [data]
+    if isinstance(data, dict):
+        return [data]
+
+    return []
+
+def get_field(alert, path, default="unknown"):
+    current = alert
+    for part in path.split("."):
+        if isinstance(current, dict):
+            current = current.get(part, default)
+        else:
+            return default
+    return current if current is not None else default
 
 def main():
     if len(sys.argv) != 2:
@@ -28,46 +41,56 @@ def main():
     agents = Counter()
     rule_ids = Counter()
     severities = Counter()
+    event_ids = Counter()
 
     for alert in alerts:
-        agent = alert.get("agent", {}).get("name", "unknown")
-        rule = alert.get("rule", {})
-        rule_id = rule.get("id", "unknown")
-        level = rule.get("level", "unknown")
+        agents[get_field(alert, "agent.name")] += 1
+        rule_ids[get_field(alert, "rule.id")] += 1
+        severities[get_field(alert, "rule.level")] += 1
+        event_ids[get_field(alert, "data.win.system.eventID")] += 1
 
-        agents[agent] += 1
-        rule_ids[rule_id] += 1
-        severities[level] += 1
+    console.print(Panel.fit(
+        "[bold cyan]WAZUH ALERT TRIAGE[/bold cyan]\nSecurity alert summary tool",
+        border_style="cyan"
+    ))
 
-    console.print("\n[bold cyan]Wazuh Alert Triage Report[/bold cyan]\n")
-    console.print(f"[bold]Total Alerts:[/bold] {len(alerts)}")
+    console.print(f"\n[bold]Total Alerts Loaded:[/bold] {len(alerts)}\n")
 
-    table = Table(title="Top Agents")
-    table.add_column("Agent")
-    table.add_column("Count")
-
-    for agent, count in agents.most_common(5):
-        table.add_row(str(agent), str(count))
-
-    console.print(table)
-
-    table = Table(title="Top Rule IDs")
-    table.add_column("Rule ID")
-    table.add_column("Count")
-
-    for rule_id, count in rule_ids.most_common(10):
-        table.add_row(str(rule_id), str(count))
-
-    console.print(table)
-
-    table = Table(title="Severity Counts")
-    table.add_column("Rule Level")
-    table.add_column("Count")
+    severity_table = Table(title="Severity Breakdown")
+    severity_table.add_column("Rule Level", style="cyan")
+    severity_table.add_column("Count", style="green")
 
     for level, count in severities.most_common():
-        table.add_row(str(level), str(count))
+        severity_table.add_row(str(level), str(count))
 
-    console.print(table)
+    console.print(severity_table)
+
+    agent_table = Table(title="Top Agents")
+    agent_table.add_column("Agent", style="cyan")
+    agent_table.add_column("Count", style="green")
+
+    for agent, count in agents.most_common(10):
+        agent_table.add_row(str(agent), str(count))
+
+    console.print(agent_table)
+
+    rule_table = Table(title="Top Rule IDs")
+    rule_table.add_column("Rule ID", style="cyan")
+    rule_table.add_column("Count", style="green")
+
+    for rule_id, count in rule_ids.most_common(10):
+        rule_table.add_row(str(rule_id), str(count))
+
+    console.print(rule_table)
+
+    event_table = Table(title="Top Windows / Sysmon Event IDs")
+    event_table.add_column("Event ID", style="cyan")
+    event_table.add_column("Count", style="green")
+
+    for event_id, count in event_ids.most_common(10):
+        event_table.add_row(str(event_id), str(count))
+
+    console.print(event_table)
 
 if __name__ == "__main__":
     main()
